@@ -1,0 +1,46 @@
+<div class="col-auto col-centered board">
+  <div class="top">
+    <h5 class="note-title">{{ board.name }}</h5>
+    <p class="note-hash">{{ "#" + board.hash }}</p>
+  </div>
+
+  <div
+    cdkDropList
+    [cdkDropListData]="noteList"
+    class="list"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <app-note
+      class="box"
+      *ngFor="let note of noteList"
+      cdkDrag
+      [note]="note"
+      cdkDrag
+    >
+      <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+    </app-note>
+  </div>
+
+  <div class="bot">
+    <form>
+      <input
+        type="text"
+        id="text"
+        name="text"
+        [(ngModel)]="text"
+        class="form-control bg-info inputField"
+        placeholder="Enter new Task"
+      />
+    </form>
+
+    <div class="row">
+      <div class="col text-center">
+        <button class="btn btn-default" (click)="addNode()">Add Note</button>
+
+        <button class="btn btn-default logo" (click)="deleteBoard(board)">
+          <fa-icon [icon]="fa.faTrash">_</fa-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

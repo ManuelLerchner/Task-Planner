@@ -1,0 +1,14 @@
+<div class="main">
+  <div class="container p-2">
+    <div cdkDropListGroup>
+      <div class="row">
+        <app-board
+          *ngFor="let board of boards"
+          class="col-auto col-centered"
+          [board]="board"
+        >
+        </app-board>
+      </div>
+    </div>
+  </div>
+</div>

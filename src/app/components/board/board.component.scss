@@ -1,0 +1,85 @@
+.board {
+  background-color: #202120;
+  border-radius: 5px;
+  padding: 10px 20px 20px 20px;
+  width: 250px;
+  margin: 10px;
+
+  box-shadow: rgba(255, 255, 255, 0.171) 0px 0px 0px 1px inset;
+  filter: drop-shadow(10px 5px 15px #040405);
+}
+
+.note-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: whitesmoke;
+}
+
+.note-hash {
+  font-size: 0.8em;
+  color: #999;
+  margin-bottom: 5px;
+}
+
+.logo {
+  color: whitesmoke;
+  transition: 0.5s;
+}
+.logo:hover {
+  color: red;
+}
+
+.top {
+  border-bottom: 1px solid #999;
+  margin-bottom: 10px;
+}
+
+.bot {
+  border-top: 1px solid #999;
+  margin-top: 10px;
+}
+
+.inputField {
+  margin-top: 10px;
+  color: black;
+}
+
+.inputField::placeholder {
+  color: black;
+  opacity: 0.5;
+}
+
+.list {
+  min-height: 60px;
+}
+
+.box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-custom-placeholder {
+  background: #ccc;
+  border: dotted 3px #999;
+  min-height: 60px;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

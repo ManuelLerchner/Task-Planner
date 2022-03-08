@@ -1,18 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {
-  CdkDragDrop,
-  moveItemInArray,
-  transferArrayItem,
-} from '@angular/cdk/drag-drop';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import * as fa from '@fortawesome/free-solid-svg-icons';
+import { liveQuery } from 'dexie';
 
-import { NOTES } from './../../../../mock-notes';
+import { IndexedDBService } from 'src/app/services/indexed-db.service';
 import { Board } from '../models/Board';
 import { Note } from '../models/Note';
-import * as fa from '@fortawesome/free-solid-svg-icons';
-import { liveQuery, PromiseExtended } from 'dexie';
 import { db } from 'src/db';
-import { Observable, combineLatest } from 'rxjs';
-import { IndexedDBService } from 'src/app/services/indexed-db.service';
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
@@ -22,7 +16,7 @@ export class BoardComponent implements OnInit {
   @Input() board!: Board;
   fa: any = fa;
 
-  text!: string;
+  text: string = '';
 
   constructor(private indexDB: IndexedDBService) {}
 
@@ -35,7 +29,6 @@ export class BoardComponent implements OnInit {
   drop(event: CdkDragDrop<any>, board: Board) {
     let movedNote = event.item.data;
     let insertIndex = event.currentIndex;
-
     this.indexDB.moveNodetoBoard(movedNote, board, insertIndex);
   }
 
@@ -43,14 +36,17 @@ export class BoardComponent implements OnInit {
     return `${note.id}_$${note.parentHash}_${note.text}`;
   }
 
-  addNode(): void {
+  addNote(): void {
     if (this.text === '') {
       alert('Please enter a note');
+      return;
     }
 
-    console.log(this.text);
+    this.indexDB.addNewNote(this.text, this.board.hash);
     this.text = '';
   }
 
-  deleteBoard(board: Board): void {}
+  deleteBoard(board: Board): void {
+    this.indexDB.deleteBoard(board);
+  }
 }

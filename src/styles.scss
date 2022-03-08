@@ -5,22 +5,22 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #2f302f;
+  background-color: #3a3a3a;
 }
 
 .btn {
   display: inline-block;
   background: #000;
   color: #fff;
-  border: none;
+  border: 0.5px solid rgba(231, 255, 12, 0.329);
   padding: 10px 20px;
   margin: 5px;
   border-radius: 5px;
   cursor: pointer;
-  text-decoration: none;
+
   font-size: 15px;
   font-family: inherit;
-  transition: 0.5s;
+  transition: all 0.5s;
 }
 
 .btn:focus {
@@ -28,8 +28,8 @@ body {
 }
 
 .btn:hover {
-  letter-spacing: 0.05em;
-  color: rgb(238, 175, 59);
+  letter-spacing: 0.08em;
+  color: rgb(255, 146, 5);
 }
 
 .btn:active {

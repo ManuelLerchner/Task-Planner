@@ -3,4 +3,5 @@ export interface Note {
   parentHash: string;
   text: string;
   order: number;
+  colorIndex: number;
 }

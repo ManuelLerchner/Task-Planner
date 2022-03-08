@@ -1,24 +1,27 @@
 .board {
-  background-color: #202120;
+  background: rgb(32, 33, 32);
+
   border-radius: 10px;
   padding: 20px 20px 20px 20px;
-  width: 250px;
-  margin-top: 10px;
+  width: 300px;
+  margin-bottom: 50px;
 
-  box-shadow: rgba(255, 255, 255, 0.171) 0px 0px 0px 1px inset;
-  filter: drop-shadow(10px 5px 15px #040405);
+  box-shadow: rgb(79, 170, 173) 0px 20px 30px -10px,
+    rgb(255, 147, 6) 0px 0px 0px 0.5px inset;
+  filter: drop-shadow(10px 10px 15px #040405);
 }
 
 .note-title {
-  font-size: 1.2em;
-  font-weight: bold;
+  font-size: 1.5em;
+
+  font-weight: 700;
   margin-bottom: 5px;
   color: gold;
 }
 
 .note-hash {
-  font-size: 0.8em;
-  color: #999;
+  font-size: 1em;
+  color: rgb(177, 177, 177);
   margin-bottom: 5px;
 }
 
@@ -41,13 +44,32 @@
 }
 
 .inputField {
-  margin-top: 10px;
-  color: black;
+  border-radius: 5px;
+
+  color: rgba(0, 0, 0, 0.89);
+  box-shadow: rgba(209, 213, 219, 0.445) 0px 0px 0px 1px inset;
+
+  padding: 5px;
+  padding-left: 10px;
+  margin: 0px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+
+  font-size: 1.1em;
+  font-weight: 300;
+
+  min-height: 50px;
+  word-wrap: break-word;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #06b6b6;
 }
 
 .inputField::placeholder {
   color: black;
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .list {
@@ -73,11 +95,11 @@
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+.list.cdk-drop-list-dragging .box:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-.example-custom-placeholder {
+.placeholder {
   background: #ccc;
   border: dotted 3px #999;
   min-height: 60px;

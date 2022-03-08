@@ -18,29 +18,36 @@
       cdkDrag
       [cdkDragData]="note"
     >
-      <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+      <div class="placeholder" *cdkDragPlaceholder></div>
     </app-note>
   </div>
 
   <div class="bot">
-    <form>
-      <input
-        type="text"
-        id="text"
-        name="text"
-        [(ngModel)]="text"
-        class="form-control bg-info inputField"
-        placeholder="Enter new Task"
-      />
-    </form>
-
     <div class="row">
-      <div class="col text-center">
-        <button class="btn btn-default" (click)="addNode()">Add Note</button>
+      <div class="col text-center mx-sm-1 my-2">
+        <form name="form">
+          <input
+            type="text"
+            id="text"
+            name="text"
+            [(ngModel)]="text"
+            class="form-control inputField"
+            placeholder="Enter new Note"
+            autofocus
+            autocomplete="off"
+          />
+          <button type="submit" class="btn btn-default" (click)="addNote()">
+            Add Note
+          </button>
 
-        <button class="btn btn-default logo" (click)="deleteBoard(board)">
-          <fa-icon [icon]="fa.faTrash">_</fa-icon>
-        </button>
+          <button
+            type="button"
+            class="btn btn-default logo"
+            (click)="deleteBoard(board)"
+          >
+            <fa-icon [icon]="fa.faTrash">_</fa-icon>
+          </button>
+        </form>
       </div>
     </div>
   </div>

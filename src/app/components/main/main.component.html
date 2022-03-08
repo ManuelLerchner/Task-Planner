@@ -1,5 +1,5 @@
 <div class="main">
-  <div class="container-xl p-1">
+  <div class="container-md p-5">
     <div class="row" cdkDropListGroup>
       <app-board
         *ngFor="let board of boards$ | async; trackBy: identifyBoard"
@@ -7,18 +7,7 @@
         [board]="board"
       >
       </app-board>
+      <app-add-new-board class="col-auto col-centered"></app-add-new-board>
     </div>
   </div>
-
-  <label>
-    Add new list:
-    <input
-      autocomplete="off"
-      type="text"
-      id="name"
-      #name
-      [(ngModel)]="listName"
-    />
-  </label>
-  <button type="submit" (click)="handleAddNewBoard()">Add new Board</button>
 </div>

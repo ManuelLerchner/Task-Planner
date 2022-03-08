@@ -1,3 +1,6 @@
-<div class="note">
-  <p>{{ note.text }}</p>
+<div class="note" (dblclick)="changeColor()" [ngClass]="[getColor()]">
+  <p class="">{{ note.text }}</p>
+  <button class="btn-sm bg-danger" (click)="deleteNote(note)">
+    <fa-icon [icon]="fa.faTrash">_</fa-icon>
+  </button>
 </div>

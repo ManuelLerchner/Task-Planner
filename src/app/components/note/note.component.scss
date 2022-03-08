@@ -1,18 +1,80 @@
 .note {
-  background-color: #50c050;
   border-radius: 5px;
 
   color: rgba(0, 0, 0, 0.89);
+  box-shadow: rgba(209, 213, 219, 0.445) 0px 0px 0px 1px inset;
+
   padding: 5px;
+  padding-left: 10px;
+  margin: 0px;
   margin-top: 5px;
   margin-bottom: 5px;
 
-  font-size: 15px;
+  font-size: 1.2em;
   font-weight: 400;
 
   height: 100%;
-  width: 100%;
+  width: 100% !important;
+  min-height: 60px;
   word-wrap: break-word;
 
-  box-shadow: rgba(209, 213, 219, 0.445) 0px 0px 0px 1px inset;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.note p {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.green {
+  background-color: #2bcc2b;
+
+  background: rgb(34, 193, 195);
+  background: linear-gradient(
+    0deg,
+    rgb(130, 229, 188) 0%,
+    rgba(45, 253, 83, 1) 100%
+  );
+}
+
+.blue {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    0deg,
+    rgb(174, 174, 241) 0%,
+    rgb(0, 132, 255) 100%
+  );
+  color: white;
+}
+
+.yellow {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    0deg,
+    rgb(199, 255, 154) 0%,
+    rgb(241, 245, 10) 100%
+  );
+}
+
+.orange {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    0deg,
+    rgb(252, 200, 32) 0%,
+    rgb(255, 125, 38) 100%
+  );
+}
+
+.pink {
+  background: rgb(180, 31, 169);
+  background: linear-gradient(
+    0deg,
+    rgb(253, 89, 242) 0%,
+    rgb(152, 69, 247) 100%
+  );
 }

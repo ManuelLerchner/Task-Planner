@@ -1,0 +1,21 @@
+<form (ngSubmit)="onSubmit()" name="form">
+  <div class="col-auto col-centered board">
+    <div class="top">
+      <h5 class="note-title">
+        <input
+          autocomplete="off"
+          type="text"
+          title="Enter board name"
+          placeholder="|"
+          id="name"
+          name="name"
+          class="inputField"
+          [(ngModel)]="boardName"
+          autofocus
+        />
+      </h5>
+    </div>
+
+    <button type="submit" class="btn btn-block">Add Board</button>
+  </div>
+</form>

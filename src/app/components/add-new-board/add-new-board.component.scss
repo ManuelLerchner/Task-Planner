@@ -1,0 +1,44 @@
+.board {
+  background-color: #202120;
+  border-radius: 10px;
+  padding: 20px 20px 20px 20px;
+  width: 300px;
+  margin-bottom: 50px;
+
+  box-shadow: rgb(79, 170, 173) 0px 20px 30px -10px,
+    rgb(6, 218, 255) 0px 0px 0px 0.5px inset;
+  filter: drop-shadow(10px 10px 15px #040405);
+}
+
+.top {
+  border-bottom: 1px solid #999;
+  margin-bottom: 10px;
+}
+
+.bot {
+  border-top: 1px solid #999;
+  margin-top: 10px;
+}
+
+.inputField {
+  width: 100%;
+  background-color: transparent;
+
+  margin: 0;
+  padding-left: 10px;
+  height: 45px;
+
+  border: 1px solid #999;
+  outline: none;
+
+  font-weight: bold;
+
+  color: gold;
+}
+
+.inputField::placeholder {
+  font-size: 1em;
+  font-weight: bold;
+
+  color: gold;
+}

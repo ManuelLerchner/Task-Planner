@@ -13,6 +13,9 @@ import { BoardComponent } from './components/board/board.component';
 import { NoteComponent } from './components/note/note.component';
 import { FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { AddNewBoardComponent } from './components/add-new-board/add-new-board.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MainComponent,
     BoardComponent,
     NoteComponent,
+    AddNewBoardComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,12 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     FontAwesomeModule,
     FormsModule,
     DragDropModule,
-    
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000',
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

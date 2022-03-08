@@ -6,16 +6,17 @@
 
   <div
     cdkDropList
-    [cdkDropListData]="noteList"
+    [cdkDropListData]="noteList | async"
     class="list"
-    (cdkDropListDropped)="drop($event)"
+    (cdkDropListDropped)="drop($event, board)"
   >
     <app-note
       class="box"
-      *ngFor="let note of noteList"
+      *ngFor="let note of noteList | async; trackBy: identifyNote"
       cdkDrag
       [note]="note"
       cdkDrag
+      [cdkDragData]="note"
     >
       <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
     </app-note>

@@ -9,7 +9,10 @@ import { NOTES } from './../../../../mock-notes';
 import { Board } from '../models/Board';
 import { Note } from '../models/Note';
 import * as fa from '@fortawesome/free-solid-svg-icons';
-
+import { liveQuery, PromiseExtended } from 'dexie';
+import { db } from 'src/db';
+import { Observable, combineLatest } from 'rxjs';
+import { IndexedDBService } from 'src/app/services/indexed-db.service';
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
@@ -19,32 +22,22 @@ export class BoardComponent implements OnInit {
   @Input() board!: Board;
   fa: any = fa;
 
-  notes: any = NOTES;
-  noteList: Note[] = [];
   text!: string;
 
-  constructor() {}
+  noteList: any = liveQuery(() =>
+    db.notes
+      .where({
+        parentHash: this.board.hash,
+      })
+      .toArray()
+  );
 
-  ngOnInit(): void {
-    this.noteList = this.notes[this.board.hash];
-  }
+  ngOnInit(): void {}
 
-  drop(event: any) {
-    console.log(event);
-    if (event.previousContainer === event.container) {
-      moveItemInArray(
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    }
+  drop(event: CdkDragDrop<any>, board: Board) {}
+
+  identifyNote(index: number, note: Note) {
+    return `${note.id}_$${note.parentHash}_${note.text}`;
   }
 
   addNode(): void {

@@ -1,4 +1,5 @@
 export interface Note {
-  id: number;
+  id?: number;
+  parentHash: string;
   text: string;
 }

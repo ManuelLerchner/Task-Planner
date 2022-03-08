@@ -10,7 +10,7 @@ export class AppDB extends Dexie {
     super('Task-Planner');
     this.version(3).stores({
       boards: '++id',
-      notes: '++id,parentHash',
+      notes: '++id,parentHash,order',
     });
     this.on('populate', () => this.populate());
   }
@@ -41,16 +41,19 @@ export class AppDB extends Dexie {
         id: 10,
         parentHash: '1',
         text: 'Feed the birds',
+        order: 0,
       },
       {
         id: 20,
         parentHash: '2',
         text: 'Feed the cringe',
+        order: 1,
       },
       {
         id: 30,
         parentHash: '3',
         text: 'Feed the sus',
+        order: 2,
       },
     ];
 

@@ -24,17 +24,20 @@ export class BoardComponent implements OnInit {
 
   text!: string;
 
+  constructor(private indexDB: IndexedDBService) {}
+
   noteList: any = liveQuery(() =>
-    db.notes
-      .where({
-        parentHash: this.board.hash,
-      })
-      .toArray()
+    db.notes.where('parentHash').equals(this.board.hash).sortBy('order')
   );
 
   ngOnInit(): void {}
 
-  drop(event: CdkDragDrop<any>, board: Board) {}
+  drop(event: CdkDragDrop<any>, board: Board) {
+    let movedNote = event.item.data;
+    let insertIndex = event.currentIndex;
+
+    this.indexDB.moveNodetoBoard(movedNote, board, insertIndex);
+  }
 
   identifyNote(index: number, note: Note) {
     return `${note.id}_$${note.parentHash}_${note.text}`;

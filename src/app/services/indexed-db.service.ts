@@ -55,7 +55,7 @@ export class IndexedDBService {
       .sortBy('order');
 
     //update board
-    db.notes
+    await db.notes
       .where('id')
       .equals(note.id as number)
       .modify((note) => {

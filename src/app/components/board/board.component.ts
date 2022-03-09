@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { Component, Input, OnInit, AfterContentInit } from '@angular/core';
+import { CdkDragDrop, CdkDragEnd } from '@angular/cdk/drag-drop';
 import * as fa from '@fortawesome/free-solid-svg-icons';
 import { liveQuery } from 'dexie';
 
@@ -24,12 +24,13 @@ export class BoardComponent implements OnInit {
     db.notes.where('parentHash').equals(this.board.hash).sortBy('order')
   );
 
-  ngOnInit(): void {}
+  ngOnInit() {}
 
-  drop(event: CdkDragDrop<any>, board: Board) {
+  async drop(event: CdkDragDrop<any>, board: Board) {
     let movedNote = event.item.data;
-    let insertIndex = event.currentIndex;
-    this.indexDB.moveNodetoBoard(movedNote, board, insertIndex);
+    let insertIndex: number = event.currentIndex;
+
+    await this.indexDB.moveNodetoBoard(movedNote, board, insertIndex);
   }
 
   identifyNote(index: number, note: Note) {
@@ -46,7 +47,7 @@ export class BoardComponent implements OnInit {
     this.text = '';
   }
 
-  deleteBoard(board: Board): void {
+  async deleteBoard(board: Board) {
     this.indexDB.deleteBoard(board);
   }
 }

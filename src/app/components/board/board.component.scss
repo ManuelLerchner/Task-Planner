@@ -17,12 +17,16 @@
   font-weight: 700;
   margin-bottom: 5px;
   color: gold;
+
+  overflow-wrap: break-word;
+  text-shadow: 1px 1px 5px #665c41;
 }
 
 .note-hash {
   font-size: 1em;
   color: rgb(177, 177, 177);
   margin-bottom: 5px;
+  text-shadow: 1px 1px 5px #444342;
 }
 
 .logo {

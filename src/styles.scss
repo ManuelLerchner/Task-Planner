@@ -4,7 +4,7 @@
 @import "~bootstrap/scss/bootstrap";
 
 body {
-  font-family: "Montserrat", "Poppins" sans-serif;
+  font-family: "Montserrat", "Poppins", sans-serif;
   background-color: #3a3a3a;
 }
 
@@ -19,7 +19,6 @@ body {
   cursor: pointer;
 
   font-size: 15px;
-  font-family: inherit;
   transition: all 0.5s;
 }
 

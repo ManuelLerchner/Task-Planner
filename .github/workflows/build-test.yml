@@ -1,0 +1,53 @@
+name: Build Test
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [20.x]
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Build project
+      run: npm run build
+      env:
+        NODE_OPTIONS: --openssl-legacy-provider
+    
+    - name: Check for HTML output
+      run: |
+        echo "Checking for HTML output in dist directory..."
+        if [ -f "dist/Task-Planner/index.html" ]; then
+          echo "✅ index.html found in build output"
+          echo "Build output contents:"
+          ls -lh dist/Task-Planner/
+          echo ""
+          echo "HTML files found:"
+          find dist/Task-Planner -name "*.html" -type f
+          echo ""
+          echo "Success: Build produced HTML output"
+          exit 0
+        else
+          echo "❌ index.html not found in build output"
+          echo "Build output directory contents:"
+          ls -lR dist/ || echo "dist directory not found"
+          exit 1
+        fi
